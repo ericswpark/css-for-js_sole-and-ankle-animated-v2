@@ -7,7 +7,7 @@ const NavLink = ({children, ...props}) => {
   return (
     <Wrapper {...props}>
       <MainLink>{children}</MainLink>
-      <BoldLink>{children}</BoldLink>
+      <BoldLink aria-hidden={true}>{children}</BoldLink>
     </Wrapper>
   );
 };
