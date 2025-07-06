@@ -36,11 +36,11 @@ const ShoeCard = ({
       <Wrapper>
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
-          {variant === 'on-sale' && <SaleFlag>Sale</SaleFlag>}
+        </ImageWrapper>
+        {variant === 'on-sale' && <SaleFlag>Sale</SaleFlag>}
           {variant === 'new-release' && (
             <NewFlag>Just released!</NewFlag>
           )}
-        </ImageWrapper>
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
@@ -73,22 +73,29 @@ const Link = styled.a`
   color: inherit;
 `;
 
-const Wrapper = styled.article``;
+const Wrapper = styled.article`
+  position: relative;
+`;
 
 const ImageWrapper = styled.div`
-  position: relative;
   overflow: hidden;
+  border-radius: 16px 16px 4px 4px;
 `;
 
 const Image = styled.img`
+  display: block;
   width: 100%;
-  border-radius: 16px 16px 4px 4px;
-  transition: transform 500ms;
-  
 
-  &:hover {
-    transform: scale(1.1) translateY(-5%);
-    transition: transform 200ms;
+  transition: transform 500ms;
+  transform-origin: 50% 75%;
+  will-change: transform;
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    ${Link}:hover &,
+    ${Link}:focus & {
+      transform: scale(1.1);
+      transition: transform 200ms;
+    }
   }
 `;
 
