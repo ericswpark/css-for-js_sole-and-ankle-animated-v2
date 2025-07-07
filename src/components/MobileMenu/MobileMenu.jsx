@@ -80,11 +80,13 @@ const Content = styled(Dialog.Content)`
   display: flex;
   flex-direction: column;
 
-  animation: ${slideInRight} 500ms;
+  animation: ${slideInRight} 500ms both ease-out;
 
-  & > * {
-    animation: ${fadeIn} 800ms;
-    animation-delay: 400ms;
+  @media (prefers-reduced-motion: no-preference) {
+    & > * {
+      animation: ${fadeIn} 500ms both;
+      animation-delay: 200ms;
+    }
   }
 `;
 
